@@ -11,7 +11,7 @@ module Rack
 
       def call(env)
         if HEROKUAPP_DOMAIN_REGEXP === (env['HTTP_HOST'] || env['SERVER_NAME'])
-          return [404, headers, body]
+          return [404, headers, [body]]
         end
 
         @app.call(env)
